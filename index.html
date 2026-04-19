@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR CODE 花卉導購網站</title>
+    <style>
+        :root { --primary-green: #2ecc71; --dark-green: #27ae60; --fb-blue: #1877F2; --ig-pink: #E4405F; }
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f0f2f5; margin: 0; padding-bottom: 50px; }
+        header { background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); color: white; text-align: center; padding: 40px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .section-title { border-left: 8px solid var(--dark-green); padding-left: 15px; margin: 40px 0 20px; color: #2c3e50; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s ease; border: 1px solid #e1e4e8; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); border-color: var(--dark-green); }
+        .company-name { font-size: 1.1rem; font-weight: bold; margin: 10px 0; color: #1a1a1a; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
+        .btn-main { background-color: var(--dark-green); color: white; text-decoration: none; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 10px; transition: 0.2s; }
+        .btn-main:hover { background-color: #219150; }
+        .social-row { display: flex; gap: 8px; justify-content: center; }
+        .btn-social { flex: 1; text-decoration: none; color: white; padding: 8px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; }
+        .btn-fb { background-color: var(--fb-blue); }
+        .btn-ig { background-color: var(--ig-pink); }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>QR CODE 導購網站</h1>
+    <p>連結優質花卉供應商與資材夥伴</p>
+</header>
+
+<div class="container">
+    <h2 class="section-title">🌸 花卉供應商 (Orchid & Flower)</h2>
+    <div class="grid" id="suppliers">
+        <div class="card"><div class="company-name">美琪蘭園</div><a href="https://www.mikiorchid.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/mikiorchid/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
+        <div class="card"><div class="company-name">台霖生物科技</div><a href="https://www.okis.com.tw/" target="_blank" class="btn-main">官方網站</a></div>
+        <div class="card"><div class="company-name">一心生物科技</div><a href="http://ihsin.com/" target="_blank" class="btn-main">官方網站</a></div>
+        <div class="card"><div class="company-name">明星蘭業</div><a href="https://www.facebook.com/StarOrchids" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">皇基股份有限公司</div><a href="https://www.royalbase.com/" target="_blank" class="btn-main">官方網站</a></div>
+        <div class="card"><div class="company-name">桂冠花卉</div><a href="https://www.facebook.com/laurel.orchid/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">麒悅企業</div><a href="https://www.cyorchid.com.tw/en-gb/about-us" target="_blank" class="btn-main">官方網站</a></div>
+        <div class="card"><div class="company-name">芳美蘭園</div><a href="https://www.facebook.com/people/%E8%8A%B3%E7%BE%8E%E8%98%AD%E5%9C%92-100057095484136/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">牛記花卉農場</div><a href="http://www.oxorchidsfarm.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/OXORCHIDSFARM/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
+        <div class="card"><div class="company-name">世茂農業生技</div><a href="https://www.symon.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/SymonOrchid" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
+        <div class="card"><div class="company-name">億晟蘭園</div><a href="https://yihcheng-orchid.com/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/YihChengOrchids/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
+        <div class="card"><div class="company-name">田尾鴻林園藝</div><a href="https://www.facebook.com/p/%E7%94%B0%E5%B0%BE%E9%B4%BB%E6%9E%97%E5%9C%92%E8%97%9D-100057095484136/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a><div class="social-row"><a href="https://www.instagram.com/taiwan.olivia.garden/" target="_blank" class="btn-social btn-ig">Instagram</a></div></div>
+        <div class="card"><div class="company-name">國華蘭園</div><a href="https://www.facebook.com/profile.php?id=100089487815688#" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">展壯台大蘭園</div><a href="https://www.taidaorchids.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/taidaorchidsflower/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
+        <div class="card"><div class="company-name">旺紅蘭花(惠寶蘭園)</div><a href="https://www.facebook.com/wanghongorchid/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">巨揚蘭園</div><a href="https://www.facebook.com/profile.php?id=61556456283484#" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">毅穎蘭園</div><a href="https://www.facebook.com/yi.ying.orchids/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">三泰蘭園</div><a href="https://www.facebook.com/sunlight.orchid.nursery/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="card"><div class="company-name">馥藝蘭藝</div><a href="https://www.facebook.com/q85915815/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+    </div>
+
+    <h2 class="section-title">🛠️ 資材供應商 (Materials)</h2>
+    <div class="grid">
+        <div class="card"><div class="company-name">資材廠商 A</div><a href="#" class="btn-main">官方網站</a></div>
+        <div class="card"><div class="company-name">資材廠商 B</div><a href="#" class="btn-main">官方網站</a></div>
+    </div>
+</div>
+
+</body>
+</html>
