@@ -15,11 +15,13 @@
         .card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); border-color: var(--dark-green); }
         .company-name { font-size: 1.1rem; font-weight: bold; margin: 10px 0; color: #1a1a1a; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
         .btn-main { background-color: var(--dark-green); color: white; text-decoration: none; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 10px; transition: 0.2s; }
-        .btn-main:hover { background-color: #219150; }
+        .btn-main:hover { filter: brightness(0.88); }
+        .btn-main.fb { background-color: var(--fb-blue); }
         .social-row { display: flex; gap: 8px; justify-content: center; }
         .btn-social { flex: 1; text-decoration: none; color: white; padding: 8px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; }
         .btn-fb { background-color: var(--fb-blue); }
         .btn-ig { background-color: var(--ig-pink); }
+        .status { grid-column: 1 / -1; text-align: center; color: #666; padding: 40px 0; }
     </style>
 </head>
 <body>
@@ -32,30 +34,85 @@
 <div class="container">
     <h2 class="section-title">🌸 花卉供應商 (Orchid & Flower)</h2>
     <div class="grid" id="suppliers">
-        <div class="card"><div class="company-name">美琪蘭園</div><a href="https://www.mikiorchid.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/mikiorchid/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
-        <div class="card"><div class="company-name">台霖生物科技</div><a href="https://www.okis.com.tw/" target="_blank" class="btn-main">官方網站</a></div>
-        <div class="card"><div class="company-name">一心生物科技</div><a href="http://ihsin.com/" target="_blank" class="btn-main">官方網站</a></div>
-        <div class="card"><div class="company-name">明星蘭業</div><a href="https://www.facebook.com/StarOrchids" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">皇基股份有限公司</div><a href="https://www.royalbase.com/" target="_blank" class="btn-main">官方網站</a></div>
-        <div class="card"><div class="company-name">桂冠花卉</div><a href="https://www.facebook.com/laurel.orchid/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">麒悅企業</div><a href="https://www.cyorchid.com.tw/en-gb/about-us" target="_blank" class="btn-main">官方網站</a></div>
-        <div class="card"><div class="company-name">芳美蘭園</div><a href="https://www.facebook.com/people/%E8%8A%B3%E7%BE%8E%E8%98%AD%E5%9C%92/100094454976698/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a><div class="social-row">
-        <a href="https://www.instagram.com/fang.mei_orchids/" target="_blank" class="btn-social btn-ig">Instagram</a></div>
-</div>
-        <div class="card"><div class="company-name">牛記花卉農場</div><a href="http://www.oxorchidsfarm.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/OXORCHIDSFARM/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
-        <div class="card"><div class="company-name">世茂農業生技</div><a href="https://www.symon.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/SymonOrchid" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
-        <div class="card"><div class="company-name">億晟蘭園</div><a href="https://yihcheng-orchid.com/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/YihChengOrchids/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
-        <div class="card"><div class="company-name">田尾鴻林園藝</div><a href="https://www.facebook.com/p/%E7%94%B0%E5%B0%BE%E9%B4%BB%E6%9E%97%E5%9C%92%E8%97%9D-100057095484136/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a><div class="social-row"><a href="https://www.instagram.com/taiwan.olivia.garden/" target="_blank" class="btn-social btn-ig">Instagram</a></div></div>
-        <div class="card"><div class="company-name">國華蘭園</div><a href="https://www.facebook.com/profile.php?id=100089487815688#" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">展壯台大蘭園</div><a href="https://www.taidaorchids.com.tw/" target="_blank" class="btn-main">官方網站</a><div class="social-row"><a href="https://www.facebook.com/taidaorchidsflower/" target="_blank" class="btn-social btn-fb">Facebook</a></div></div>
-        <div class="card"><div class="company-name">旺紅蘭花(惠寶蘭園)</div><a href="https://www.facebook.com/wanghongorchid/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">巨揚蘭園</div><a href="https://www.facebook.com/profile.php?id=61556456283484#" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">毅穎蘭園</div><a href="https://www.facebook.com/yi.ying.orchids/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">三泰蘭園</div><a href="https://www.facebook.com/sunlight.orchid.nursery/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
-        <div class="card"><div class="company-name">馥藝蘭藝</div><a href="https://www.facebook.com/q85915815/" target="_blank" class="btn-main" style="background:#1877F2">Facebook</a></div>
+        <div class="status">資料載入中…</div>
     </div>
-
 </div>
+
+<script>
+/* ===== 資料來源：Google 試算表（在試算表裡新增、修改、刪除，網頁會自動更新）===== */
+var SHEET_ID = "1c0sj9L3-bRkno3RGqhWrlrPHrP8__Cs51OKzqnv8p9c";
+
+var grid = document.getElementById("suppliers");
+
+function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+}
+function cleanUrl(u) {
+    u = (u || "").trim();
+    if (!u) return "";
+    if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+    return u;
+}
+function showStatus(msg) {
+    grid.innerHTML = '<div class="status">' + esc(msg) + '</div>';
+}
+
+/* 把試算表資料轉成 [{name, site, fb, ig}] */
+function parseTable(table) {
+    var cols = table.cols.map(function (c) { return (c.label || "").trim().toLowerCase(); });
+    var rows = table.rows.map(function (r) {
+        return (r.c || []).map(function (cell) { return cell && cell.v != null ? String(cell.v).trim() : ""; });
+    });
+    // 如果 Google 沒把第一列當標題，就自己拿第一列當標題
+    if (cols.indexOf("公司名") === -1 && rows.length && rows[0].indexOf("公司名") !== -1) {
+        cols = rows.shift().map(function (v) { return v.toLowerCase(); });
+    }
+    function idx(names, fallback) {
+        for (var i = 0; i < names.length; i++) { var k = cols.indexOf(names[i]); if (k !== -1) return k; }
+        return fallback;
+    }
+    var iName = idx(["公司名", "公司名稱", "名稱"], 0);
+    var iSite = idx(["網站", "官網", "官方網站"], 1);
+    var iFb   = idx(["社群", "facebook", "fb"], 2);
+    var iIg   = idx(["ig", "instagram"], 3);
+    return rows.map(function (r) {
+        return { name: r[iName] || "", site: cleanUrl(r[iSite]), fb: cleanUrl(r[iFb]), ig: cleanUrl(r[iIg]) };
+    }).filter(function (x) { return x.name; });
+}
+
+function render(list) {
+    if (!list.length) { showStatus("目前沒有廠商資料"); return; }
+    grid.innerHTML = list.map(function (x) {
+        var html = '<div class="card"><div class="company-name">' + esc(x.name) + '</div>';
+        var social = [];
+        if (x.site) {
+            html += '<a href="' + esc(x.site) + '" target="_blank" rel="noopener" class="btn-main">官方網站</a>';
+            if (x.fb) social.push('<a href="' + esc(x.fb) + '" target="_blank" rel="noopener" class="btn-social btn-fb">Facebook</a>');
+        } else if (x.fb) {
+            html += '<a href="' + esc(x.fb) + '" target="_blank" rel="noopener" class="btn-main fb">Facebook</a>';
+        }
+        if (x.ig) social.push('<a href="' + esc(x.ig) + '" target="_blank" rel="noopener" class="btn-social btn-ig">Instagram</a>');
+        if (social.length) html += '<div class="social-row">' + social.join("") + '</div>';
+        return html + '</div>';
+    }).join("");
+}
+
+var timer = setTimeout(function () { showStatus("資料載入失敗，請稍後重新整理"); }, 15000);
+
+window.handleSheet = function (resp) {
+    clearTimeout(timer);
+    if (!resp || resp.status === "error" || !resp.table) { showStatus("資料載入失敗，請稍後重新整理"); return; }
+    render(parseTable(resp.table));
+};
+
+var s = document.createElement("script");
+s.src = "https://docs.google.com/spreadsheets/d/" + SHEET_ID +
+        "/gviz/tq?headers=1&tqx=out:json;responseHandler:handleSheet&_=" + Date.now();
+s.onerror = function () { clearTimeout(timer); showStatus("資料載入失敗，請稍後重新整理"); };
+document.body.appendChild(s);
+</script>
 
 </body>
 </html>
