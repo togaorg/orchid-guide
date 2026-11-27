@@ -21,6 +21,12 @@
         .btn-social { flex: 1; text-decoration: none; color: white; padding: 8px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; }
         .btn-fb { background-color: var(--fb-blue); }
         .btn-ig { background-color: var(--ig-pink); }
+        .region-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .region-nav button { background: white; color: var(--dark-green); border: 2px solid var(--dark-green); padding: 8px 18px; border-radius: 999px; font-weight: bold; font-size: 0.95rem; font-family: inherit; cursor: pointer; }
+        .region-nav button:hover, .region-nav button.active { background: var(--dark-green); color: white; }
+        .region-nav button small { font-weight: normal; opacity: 0.8; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: -4px 0 12px; }
+        .tag { background: #efedff; color: var(--dark-green); font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; }
         .status { grid-column: 1 / -1; text-align: center; color: #666; padding: 40px 0; }
     </style>
 </head>
@@ -32,9 +38,10 @@
 </header>
 
 <div class="container">
-    <h2 class="section-title">🌸 花卉供應商 (Orchid & Flower)</h2>
-    <div class="grid" id="suppliers">
-        <div class="status">資料載入中…</div>
+    <nav class="region-nav" id="region-nav"></nav>
+    <div id="suppliers">
+        <h2 class="section-title">🌸 花卉供應商 (Orchid & Flower)</h2>
+        <div class="grid"><div class="status">資料載入中…</div></div>
     </div>
 </div>
 
@@ -42,7 +49,12 @@
 /* ===== 資料來源：Google 試算表（在試算表裡新增、修改、刪除，網頁會自動更新）===== */
 var SHEET_ID = "1c0sj9L3-bRkno3RGqhWrlrPHrP8__Cs51OKzqnv8p9c";
 
+/* 縣市按鈕的排列順序（由北到南、再到東部離島）；不在清單裡的排在後面 */
+var CITY_ORDER = ["基隆","臺北","新北","桃園","新竹","苗栗","臺中","彰化","南投","雲林","嘉義","臺南","高雄","屏東","宜蘭","花蓮","臺東","澎湖","金門","連江"];
+
 var grid = document.getElementById("suppliers");
+var nav = document.getElementById("region-nav");
+var ALL = [], CITIES = [], current = "";
 
 function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -56,10 +68,16 @@ function cleanUrl(u) {
     return u;
 }
 function showStatus(msg) {
-    grid.innerHTML = '<div class="status">' + esc(msg) + '</div>';
+    grid.innerHTML = '<h2 class="section-title">🌸 花卉供應商 (Orchid &amp; Flower)</h2>' +
+                     '<div class="grid"><div class="status">' + esc(msg) + '</div></div>';
+}
+function cityRank(c) {
+    var n = c.replace(/^台/, "臺");
+    for (var i = 0; i < CITY_ORDER.length; i++) if (n.indexOf(CITY_ORDER[i]) === 0) return i;
+    return 999;
 }
 
-/* 把試算表資料轉成 [{name, site, fb, ig}] */
+/* 把試算表資料轉成 [{name, site, fb, ig, cities}] */
 function parseTable(table) {
     var cols = table.cols.map(function (c) { return (c.label || "").trim().toLowerCase(); });
     var rows = table.rows.map(function (r) {
@@ -77,15 +95,49 @@ function parseTable(table) {
     var iSite = idx(["網站", "官網", "官方網站"], 1);
     var iFb   = idx(["社群", "facebook", "fb"], 2);
     var iIg   = idx(["ig", "instagram"], 3);
+    var iCity = idx(["縣市", "地區", "區域"], -1);
     return rows.map(function (r) {
-        return { name: r[iName] || "", site: cleanUrl(r[iSite]), fb: cleanUrl(r[iFb]), ig: cleanUrl(r[iIg]) };
+        var raw = iCity === -1 ? "" : (r[iCity] || "");
+        // 一家可以填多個縣市，用「、」「,」或空格隔開，例如「臺南市、高雄市」
+        var cities = raw.split(/[、,，\/\s]+/).filter(Boolean);
+        return { name: r[iName] || "", site: cleanUrl(r[iSite]), fb: cleanUrl(r[iFb]), ig: cleanUrl(r[iIg]), cities: cities };
     }).filter(function (x) { return x.name; });
 }
 
-function render(list) {
-    if (!list.length) { showStatus("目前沒有廠商資料"); return; }
-    grid.innerHTML = list.map(function (x) {
+function setup(list) {
+    ALL = list;
+    var count = {};
+    list.forEach(function (x) { x.cities.forEach(function (c) { count[c] = (count[c] || 0) + 1; }); });
+    CITIES = Object.keys(count).sort(function (a, b) { return cityRank(a) - cityRank(b); });
+    if (CITIES.length > 1) {   // 只有一個縣市或都沒填，就不顯示篩選按鈕
+        nav.innerHTML = '<button data-city="">全部 <small>' + list.length + '</small></button>' +
+            CITIES.map(function (c) {
+                return '<button data-city="' + esc(c) + '">' + esc(c) + ' <small>' + count[c] + '</small></button>';
+            }).join("");
+        nav.onclick = function (e) {
+            var b = e.target.closest("button");
+            if (b) { current = b.getAttribute("data-city"); render(); }
+        };
+    }
+    render();
+}
+
+function render() {
+    if (!ALL.length) { showStatus("目前沒有廠商資料"); return; }
+    Array.prototype.forEach.call(nav.querySelectorAll("button"), function (b) {
+        b.classList.toggle("active", b.getAttribute("data-city") === current);
+    });
+    var list = current ? ALL.filter(function (x) { return x.cities.indexOf(current) !== -1; }) : ALL;
+    var title = current ? "📍 " + esc(current) + "花卉供應商" : "🌸 花卉供應商 (Orchid &amp; Flower)";
+    grid.innerHTML = '<h2 class="section-title">' + title + '</h2><div class="grid">' + cards(list) + '</div>';
+}
+
+function cards(list) {
+    return list.map(function (x) {
         var html = '<div class="card"><div class="company-name">' + esc(x.name) + '</div>';
+        if (x.cities.length) {
+            html += '<div class="tags">' + x.cities.map(function (c) { return '<span class="tag">📍 ' + esc(c) + '</span>'; }).join("") + '</div>';
+        }
         var social = [];
         if (x.site) {
             html += '<a href="' + esc(x.site) + '" target="_blank" rel="noopener" class="btn-main">官方網站</a>';
@@ -104,7 +156,7 @@ var timer = setTimeout(function () { showStatus("資料載入失敗，請稍後�
 window.handleSheet = function (resp) {
     clearTimeout(timer);
     if (!resp || resp.status === "error" || !resp.table) { showStatus("資料載入失敗，請稍後重新整理"); return; }
-    render(parseTable(resp.table));
+    setup(parseTable(resp.table));
 };
 
 var s = document.createElement("script");
