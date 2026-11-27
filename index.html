@@ -43,22 +43,19 @@
         }
         .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(142,124,195,0.16); }
         .company-name { font-size: 1.02rem; font-weight: 600; margin: 0 0 12px; color: var(--ink); min-height: 2.6rem; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
-        .btn-main {
-            display: inline-block; min-width: 140px; padding: 9px 22px; margin-bottom: 10px;
-            background: var(--purple); color: white; text-decoration: none;
-            border-radius: 999px; font-size: 0.92rem; letter-spacing: 0.05em; transition: 0.2s;
+        /* 所有按鈕同一個大小、全部實心：官網紫、Facebook 藍、Instagram 粉紅 */
+        .btn-main, .btn-social {
+            box-sizing: border-box; display: inline-block; width: 160px; padding: 9px 0;
+            border-radius: 999px; font-size: 0.92rem; letter-spacing: 0.05em;
+            text-decoration: none; transition: 0.2s; border: 1px solid transparent;
         }
+        .btn-main { background: var(--purple); border-color: var(--purple); color: white; margin-bottom: 10px; }
         .btn-main:hover { filter: brightness(0.92); }
-        .btn-main.fb { background: var(--fb); }
-        .social-row { display: flex; gap: 8px; justify-content: center; }
-        .btn-social {
-            text-decoration: none; padding: 5px 14px; border-radius: 999px;
-            font-size: 0.8rem; background: white; transition: 0.2s;
-        }
-        .btn-fb { color: var(--fb); border: 1px solid var(--fb); }
-        .btn-ig { color: var(--ig); border: 1px solid var(--ig); }
-        .btn-fb:hover { background: var(--fb); color: white; }
-        .btn-ig:hover { background: var(--ig); color: white; }
+        .btn-main.fb { background: var(--fb); border-color: var(--fb); }
+        .social-row { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+        .btn-fb { background: var(--fb); border-color: var(--fb); color: white; }
+        .btn-ig { background: var(--ig); border-color: var(--ig); color: white; }
+        .btn-social:hover { filter: brightness(0.92); }
         .region-nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
         .region-nav button {
             background: #ffffff; color: var(--purple); border: 1px solid #a68fdc;
